@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Creator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Header compacto -->
+        <header class="header">
+            <h1>Character Creator</h1>
+        </header>
+
+        <!-- Layout principal mais compacto -->
+        <main class="main-layout">
+            <!-- Área do personagem -->
+            <section class="character-section">
+                <div class="character-display">
+                    <div class="frames">
+                        <div class="frame" data-frame="1">
+                            <canvas id="characterCanvas1" width="64" height="64"></canvas>
+                            <button class="frame-btn active" data-frame="1">Frame 1</button>
+                        </div>
+                        <div class="frame" data-frame="2">
+                            <canvas id="characterCanvas2" width="64" height="64"></canvas>
+                            <button class="frame-btn" data-frame="2">Frame 2</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Controles principais -->
+                <div class="controls">
+                    <button id="randomizeCharacter" class="btn">🎲 Aleatório</button>
+                    <button id="exportCharacter" class="btn">💾 Exportar</button>
+                    <div class="color-picker">
+                        <label for="bgColor">🎨 Cor de Fundo:</label>
+                        <input type="color" id="bgColor" value="#ff6b9d">
+                    </div>
+                </div>
+
+                <!-- Upload de novo item -->
+                <div class="upload-section">
+                    <h3>Adicionar Item</h3>
+                    <div class="upload-controls">
+                        <input type="file" id="newItemFile" accept="image/*" style="display: none;">
+                        <button id="selectFile" class="btn upload">📁 Selecionar Imagem</button>
+                        <select id="categorySelect" class="category-select">
+                            <option value="">Escolha categoria...</option>
+                            <option value="armatraseira">Arma Traseira</option>
+                            <option value="corpo">Corpo</option>
+                            <option value="olhos">Olhos</option>
+                            <option value="cabelo">Cabelo</option>
+                            <option value="bandana">Bandana</option>
+                            <option value="roupa">Roupa</option>
+                            <option value="calca">Calça</option>
+                            <option value="arma">Arma</option>
+                            <option value="chapeu">Chapéu</option>
+                        </select>
+                    </div>
+                    <div class="preview-section" id="previewSection" style="display: none;">
+                        <h4>Pré-visualização</h4>
+                        <canvas id="previewCanvas" width="64" height="64"></canvas>
+                        <div class="position-controls">
+                            <label>Posição X: <input type="range" id="posX" min="-32" max="32" value="0"></label>
+                            <label>Posição Y: <input type="range" id="posY" min="-32" max="32" value="0"></label>
+                            <button id="addItem" class="btn primary">✓ Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Painel de customização -->
+            <section class="customization-section">
+                <!-- Abas de categoria -->
+                <div class="category-tabs" id="categoryTabs">
+                    <!-- Gerado dinamicamente -->
+                </div>
+
+                <!-- Grid de itens -->
+                <div class="items-container">
+                    <div class="search-bar">
+                        <input type="text" id="itemSearch" placeholder="🔍 Buscar...">
+                        <button id="clearSearch" class="btn-clear">×</button>
+                    </div>
+                    <div class="items-grid" id="itemsGrid">
+                        <!-- Itens gerados dinamicamente -->
+                    </div>
+                </div>
+
+                <!-- Controles CSS -->
+                <div class="css-panel">
+                    <div id="cssControls">
+                        <p>Selecione um item para personalizar</p>
+                    </div>
+                    <div class="selected-item-info">
+                        <span id="selectedItemName">Nenhum item selecionado</span>
+                        <div class="item-actions">
+                            <button id="removeItem" class="btn remove">🗑 Remover</button>
+                            <button id="deleteFromList" class="btn delete">❌ Excluir da Lista</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Config controls -->
+        <div class="config-bar">
+            <button id="exportConfig" class="btn small">📤 Exportar Config</button>
+            <button id="loadConfig" class="btn small">📥 Carregar Config</button>
+            <input type="file" id="configFileInput" accept=".json" style="display: none;">
+        </div>
+    </div>
+
+    <script src="js/script-improved.js"></script>
+</body>
+</html>
+
